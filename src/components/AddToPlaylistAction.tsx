@@ -29,7 +29,7 @@ export function AddToPlaylistAction({ playlists, meData, uri }: AddToPlaylistAct
 
   const ownedPlaylists = playlists.filter((p) => p.owner?.id === meData?.id);
 
-  const { playlistsContainingTrack } = usePlaylistsContainingTrack({
+  const { playlistsContainingTrack, playlistsContainingTrackRevalidate } = usePlaylistsContainingTrack({
     playlists: ownedPlaylists,
     trackUri: uri,
     options: { execute: ownedPlaylists.length > 0 && !!uri },
@@ -67,6 +67,7 @@ export function AddToPlaylistAction({ playlists, meData, uri }: AddToPlaylistAct
                     return;
                   }
                   await showToast({ title: `Removed from ${playlist.name}` });
+                  playlistsContainingTrackRevalidate();
                 } else {
                   await addToPlaylist({
                     playlistId: playlist.id!,
@@ -78,6 +79,7 @@ export function AddToPlaylistAction({ playlists, meData, uri }: AddToPlaylistAct
                     return;
                   }
                   await showToast({ title: `Added to ${playlist.name}` });
+                  playlistsContainingTrackRevalidate();
                 }
               } catch (err) {
                 const error = getError(err);
