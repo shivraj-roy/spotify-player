@@ -10,10 +10,7 @@ type UsePlaylistsContainingTrackProps = {
   };
 };
 
-async function getPlaylistsContainingTrack(
-  playlists: SimplifiedPlaylistObject[],
-  trackUri: string,
-): Promise<string[]> {
+async function getPlaylistsContainingTrack(playlists: SimplifiedPlaylistObject[], trackUri: string): Promise<string[]> {
   const results = await Promise.allSettled(
     playlists.map(async (playlist) => {
       const uris = await getAllPlaylistItems(playlist);

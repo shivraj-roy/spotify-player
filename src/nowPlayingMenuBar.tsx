@@ -65,8 +65,7 @@ function NowPlayingMenuBarCommand({ launchType }: LaunchProps) {
     options: { execute: launchType === LaunchType.UserInitiated },
   });
 
-  const ownedPlaylists =
-    myPlaylistsData?.items?.filter((playlist) => playlist.owner?.id === meData?.id) ?? [];
+  const ownedPlaylists = myPlaylistsData?.items?.filter((playlist) => playlist.owner?.id === meData?.id) ?? [];
   const { playlistsContainingTrack } = usePlaylistsContainingTrack({
     playlists: ownedPlaylists,
     trackUri: currentlyPlayingData?.item?.uri,
@@ -296,7 +295,11 @@ function NowPlayingMenuBarCommand({ launchType }: LaunchProps) {
             <MenuBarExtra.Item
               key={`${playlist.id}-${index}`}
               title={playlist.name}
-              icon={alreadyInPlaylist ? { source: Icon.Checkmark, tintColor: Color.Green } : { source: Icon.Circle, tintColor: Color.SecondaryText }}
+              icon={
+                alreadyInPlaylist
+                  ? { source: Icon.Checkmark, tintColor: Color.Green }
+                  : { source: Icon.Circle, tintColor: Color.SecondaryText }
+              }
               onAction={async () => {
                 try {
                   if (alreadyInPlaylist) {

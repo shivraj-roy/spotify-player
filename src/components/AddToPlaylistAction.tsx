@@ -1,4 +1,15 @@
-import { Action, ActionPanel, Color, getPreferenceValues, Icon, Image, popToRoot, showHUD, showToast, Toast } from "@raycast/api";
+import {
+  Action,
+  ActionPanel,
+  Color,
+  getPreferenceValues,
+  Icon,
+  Image,
+  popToRoot,
+  showHUD,
+  showToast,
+  Toast,
+} from "@raycast/api";
 import { addToPlaylist } from "../api/addToPlaylist";
 import { removeFromPlaylist } from "../api/removeFromPlaylist";
 import { getError } from "../helpers/getError";

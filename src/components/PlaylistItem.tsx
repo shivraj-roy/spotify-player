@@ -20,7 +20,9 @@ export default function PlaylistItem({ type, playlist, actions, alreadyAdded }: 
   actions = actions ?? <PlaylistActionPanel title={title} playlist={playlist} />;
 
   const accessories = [
-    ...(alreadyAdded ? [{ icon: { source: Icon.Checkmark, tintColor: Color.Green }, tooltip: "Already in playlist" }] : []),
+    ...(alreadyAdded
+      ? [{ icon: { source: Icon.Checkmark, tintColor: Color.Green }, tooltip: "Already in playlist" }]
+      : []),
     { text: `${playlist?.tracks?.total} songs` },
   ];
 
